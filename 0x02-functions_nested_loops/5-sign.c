@@ -1,5 +1,8 @@
 #include "main.h"
 
+/*
+ * print sign
+ */
 
 
 int print_sign(int n)
