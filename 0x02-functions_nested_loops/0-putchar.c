@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - Print "_putchar"
@@ -13,9 +13,9 @@ int main(void)
 
 	while (i < 9)
 	{
-		putchar(name_of_school[i]);
+		_putchar(name_of_school[i]);
 		i++;
 	}
-	putchar('\n');
+	_putchar('\n');
 	return (0);
 }
