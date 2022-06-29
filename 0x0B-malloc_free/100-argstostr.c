@@ -10,36 +10,41 @@
  * Return: If ac == 0, av == NULL, or the function fails - NULL.
  *         Otherwise - a pointer to the new string.
  */
+
 char *argstostr(int ac, char **av)
 {
-  char *str;
-  int arg, byte, index, size = ac;
+	int i, j;
+	int count = 0;
+	int t_count = 0;
+	char *result;
 
-  if (ac == 0 || av == NULL)
-    return (NULL);
+	if (ac == 0 || av == NULL)
+		return ('\0');
 
-  for (arg = 0; arg < ac; arg++)
-    {
-      for (byte = 0; av[arg][byte]; byte++)
-	size++;
-    }
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+			t_count++;
 
-  str = malloc(sizeof(char) * size + 1);
+		t_count++;
+	}
 
-  if (str == NULL)
-    return (NULL);
+	result = malloc(sizeof(char) * t_count + 1);
 
-  index = 0;
+	if (result == NULL)
+	{
+		return ('\0');
+	}
 
-  for (arg = 0; arg < ac; arg++)
-    {
-      for (byte = 0; av[arg][byte]; byte++)
-	str[index++] = av[arg][byte];
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			result[count++] = av[i][j];
+		}
+		result[count++] = '\n';
+	}
 
-      str[index++] = '\n';
-    }
-
-  str[size] = '\0';
-
-  return (str);
+	result[t_count] = '\0';
+	return (result);
 }
