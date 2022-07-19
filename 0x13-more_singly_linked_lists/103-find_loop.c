@@ -1,32 +1,27 @@
 #include "lists.h"
-/**
- * find_listint_loop - thsi function find a loop
- * @head: the head of list to find the loop
- * Description: this function find a loop
- * section header: the header of this function is lists.h)*
- * Return: the node were the loop is located
- */
-listint_t *find_listint_loop(listint_t *head)
-{
-	listint_t *idontknow, *idontknowagain;
 
-	idontknow = MAYBEIKNOW;
-	idontknowagain = idontknow;
-	while (idontknow && idontknowagain && idontknowagain->IMPOSIBLEKNOW)
+/**
+ * reverse_listint - reverses a linked list.
+ * @head: head of a list.
+ *
+ * Return: pointer to the first node.
+ */
+listint_t *reverse_listint(listint_t **head)
+{
+	listint_t *p;
+	listint_t *n;
+
+	p = NULL;
+	n = NULL;
+
+	while (*head != NULL)
 	{
-		idontknow = idontknow->IMPOSIBLEKNOW;
-		idontknowagain = idontknowagain->IMPOSIBLEKNOW->IMPOSIBLEKNOW;
-		if (idontknow == idontknowagain)
-		{
-			idontknow = MAYBEIKNOW;
-			while (idontknow && idontknowagain)
-			{
-				if (idontknow == idontknowagain)
-					return (idontknow);
-				idontknow = idontknow->IMPOSIBLEKNOW;
-				idontknowagain = idontknowagain->IMPOSIBLEKNOW;
-			}
-		}
+		n = (*head)->next;
+		(*head)->next = p;
+		p = *head;
+		*head = n;
 	}
-	return (IKNOW);
+
+	*head = p;
+	return (*head);
 }
